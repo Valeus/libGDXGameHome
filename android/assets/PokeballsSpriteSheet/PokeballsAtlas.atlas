@@ -1,0 +1,62 @@
+
+PokeballsAtlas.png
+size: 1024,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+pokeball1
+  rotate: false
+  xy: 2, 0
+  size: 125, 118
+  orig: 125, 118
+  offset: 0, 0
+  index: -1
+pokeball2
+  rotate: false
+  xy: 129, 0
+  size: 125, 118
+  orig: 125, 118
+  offset: 0, 0
+  index: -1
+pokeball3
+  rotate: false
+  xy: 256, 0
+  size: 125, 118
+  orig: 125, 118
+  offset: 0, 0
+  index: -1
+pokeball4
+  rotate: false
+  xy: 383, 0
+  size: 125, 118
+  orig: 125, 118
+  offset: 0, 0
+  index: -1
+pokeball5
+  rotate: false
+  xy: 510, 0
+  size: 125, 118
+  orig: 125, 118
+  offset: 0, 0
+  index: -1
+pokeball6
+  rotate: false
+  xy: 637, 0
+  size: 125, 118
+  orig: 125, 118
+  offset: 0, 0
+  index: -1
+pokeball7
+  rotate: false
+  xy: 764, 0
+  size: 125, 118
+  orig: 125, 118
+  offset: 0, 0
+  index: -1
+pokeball8
+  rotate: false
+  xy: 891, 0
+  size: 125, 118
+  orig: 125, 118
+  offset: 0, 0
+  index: -1
