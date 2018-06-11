@@ -2,8 +2,12 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -15,42 +19,54 @@ public class JolteonActor extends Actor {
 
 
     Sprite sprite = new Sprite(new Texture(Gdx.files.internal("JolteonImages/Jolteon01.png")));
+    int x = 0;
+    int y = 250;
+    TextureAtlas textureAtlas;
+    Rectangle rect = new Rectangle(getX(), getY(), getWidth(), getHeight());
+    Animation<TextureRegion> stillAnimation;
+    MoveToAction moveToAction = new MoveToAction();
+    float timeForStill = 0.0f;
+    float timeforMove = 0.0f;
 
     public JolteonActor(){
 
-        //setBounds(getWidth(),0f,sprite.getWidth(),sprite.getHeight());
+        sprite = new Sprite(new Texture(Gdx.files.internal("JolteonImages/Jolteon01.png")));
+        textureAtlas = new TextureAtlas(Gdx.files.internal("JolteonSpriteSheet/JolteonAtlas.atlas"));
 
-        setTouchable(Touchable.enabled);
-        MoveToAction moveaction = new MoveToAction();
+        stillAnimation = new Animation(1 / 10f, textureAtlas.getRegions());
 
-        moveaction.setPosition(getWidth(),0f);
-        moveaction.setDuration(5f);
-        addAction(moveaction);
+        setX(x);
+        setY(y);
+        setBounds(getX(), getY(), sprite.getWidth(), sprite.getHeight());
+        moveToAction.setPosition(1441f, getY());
+        moveToAction.setDuration((float) (Math.random() * 8) + 4);
+        addAction(moveToAction);
+
 
     }
 
     @Override
     public void act(float delta) {
         super.act(delta);
-        //setBounds(x,y,sprite.getWidth(),sprite.getHeight());
-        //if (move)
-        //    x++;
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
-        //batch.draw(texture,x,y);
-        sprite.draw(batch);
+        timeForStill += Gdx.graphics.getDeltaTime();
+        batch.draw(stillAnimation.getKeyFrame(timeForStill, true), getX(), getY());
     }
 
     @Override
     protected void positionChanged() {
-        sprite.setPosition(getX(),getY());
         super.positionChanged();
     }
 
-    public void setSprite(float x, float y, float w, float h) {
-        sprite.setBounds(x,y,w,h);
+    public Rectangle getRectangle() {
+        return rect;
+    }
+
+    public MoveToAction getAction() {
+        return moveToAction;
     }
 
 }
